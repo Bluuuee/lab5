@@ -48,8 +48,11 @@ int rpn_calculator::process_form(std::string formula) {
         if(iss2 >> val) {
             stack.push(val);
         } else {
-            perform(operation_type(operand[0]));
+            operation* op(operation_type(operand[0]));
+            perform(op);
+            delete op;
         }
     }
-    return stack.top();
+    result = stack.top();
+    return result;
 };
