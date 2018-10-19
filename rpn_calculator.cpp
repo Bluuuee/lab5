@@ -4,6 +4,11 @@
 #include "rpn_calculator.hpp"
 #include <sstream>
 
+/*
+ * Creates a pointer to a operation depending on the value passed into it.
+ * @param arithmetic operation char/int
+ * @return pointer to a operation
+ */
 operation* rpn_calculator::operation_type(int operation) {
     switch (operation) {
         case addition_operation::ADDITION_CODE :
@@ -14,11 +19,12 @@ operation* rpn_calculator::operation_type(int operation) {
             return new multiplication_operation();
         case division_operation::DIVISION_CODE :
             return new division_operation();
-        default:
-            return nullptr;
     }
 };
 
+/* Performs the calculation depending on the operation passed into it.
+ * @param pointer to an operation
+ */
 void rpn_calculator::perform(operation *op) {
     int b = stack.top();
     stack.pop();
@@ -28,6 +34,11 @@ void rpn_calculator::perform(operation *op) {
     stack.push(result);
 };
 
+/*
+ * Calculates the formula passed in.
+ * @param string representing a formula
+ * @return result of the formula
+ */
 int rpn_calculator::process_form(std::string formula) {
     std::istringstream iss(formula);
     std::string operand;
@@ -40,6 +51,5 @@ int rpn_calculator::process_form(std::string formula) {
             perform(operation_type(operand[0]));
         }
     }
-    stack.top();
-
+    return stack.top();
 };

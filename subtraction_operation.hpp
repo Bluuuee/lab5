@@ -8,13 +8,8 @@
 class subtraction_operation : public abstract_operation {
 public:
     static const char SUBTRACTION_CODE = '-';
-    subtraction_operation();
-    int perform(int a, int b) override;
+    subtraction_operation() : abstract_operation(SUBTRACTION_CODE){};
+    int perform(int a, int b) override {return a - b;};
     ~subtraction_operation() override = default;
-};
-
-subtraction_operation::subtraction_operation() : abstract_operation(SUBTRACTION_CODE){};
-int subtraction_operation:: perform(int a, int b) {
-    return a - b;
 };
 #endif //LAB5_SUBTRACTION_OPERATION_HPP

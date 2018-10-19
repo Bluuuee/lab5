@@ -17,6 +17,7 @@ private:
     std::stack<int> stack;
     operation* operation_type(int operation);
     void perform(operation* op);
+public:
     int process_form(std::string formula);
 };
 #endif //LAB5_RPN_CALCULATOR_HPP
