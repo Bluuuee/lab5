@@ -12,4 +12,5 @@ public:
     int perform(int a, int b) override {return a * b;};
     ~multiplication_operation() override = default;
 };
+
 #endif //LAB5_MULTIPLICATION_OPERATION_HPP

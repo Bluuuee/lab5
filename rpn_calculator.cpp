@@ -19,6 +19,8 @@ operation* rpn_calculator::operation_type(int operation) {
             return new multiplication_operation();
         case division_operation::DIVISION_CODE :
             return new division_operation();
+        default:
+            return nullptr;
     }
 };
 
